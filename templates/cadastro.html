@@ -1,0 +1,28 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<h2>Cadastro de Produtos</h2>
+<hr>
+    <form action="submit" method="POST">{% csrf_token %}
+        <label>Nome: </label>
+        <input type="text" name="nome" size="23px" placeholder="Informe nome do Produto">
+        <br>
+        <br>
+        <label>NCM: </label>
+        <input type="text" name="ncm" size="23px" placeholder="Informe o ncm">
+        <br>
+        <br>
+        <label>Valor: </label>
+        <input type="text" name="valor" size="23px" placeholder="Preço do produto">
+        <br>
+        <br>
+        <button type="submit">Cadastrar</button>
+        <button type="reset">Reiniciar</button>
+        <a href="/">
+            <button type="button">Voltar</button>
+        </a>
+        <hr>
+    </form>
+{% endblock%}
+

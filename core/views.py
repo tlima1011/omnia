@@ -27,7 +27,7 @@ def submit_login(request):
             login(request, usuario)
             return redirect('/')
         else:
-            messages.error(request, 'Usuario e/ou senha invalidos')
+            messages.error(request, 'Usuario e/ou senha inválidos')
     return redirect('/')
 
 
@@ -37,6 +37,28 @@ def lista_produtos(request):
     produto = Produto.objects.filter(usuario=usuario)
     dados = {'produto': produto}
     return render(request, 'produto.html', dados)
+
+
+@login_required(login_url='/login/')
+def cadastro(request):
+    return render(request, 'cadastro.html')
+
+
+@login_required(login_url='/login/')
+def submit_cadastro(request):
+    if request.POST:
+        nome = request.POST.get('nome')
+        ncm = request.POST.get('ncm')
+        valor = request.POST.get('valor')
+        usuario = request.user
+        Produto.objects.create(
+            nome=nome,
+            ncm=ncm,
+            valor=valor,
+            usuario=usuario
+        )
+        return redirect('/')
+    return redirect('/')
 
 
 
