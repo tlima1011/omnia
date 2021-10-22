@@ -1,0 +1,13 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <h1 align="center"><i>Only Products</i></h1>
+    <h3>Produtos</h3>
+    <ul style="font-size: 18px">
+        {% for produto in produto %}
+            <li>{{ produto.nome }} - {{ produto.ncm}} - {{ produto.valor }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
