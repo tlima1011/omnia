@@ -5,11 +5,14 @@
     <hr>
     <h2>Produtos</h2>
     <a href="cadastro/">
-        <button class="button button2" autofocus>Novos Produtos</button>
+        <button class="button button1" autofocus>Novos Produtos</button>
     </a>
     <ul style="font-size:19px">
         {% for produto in produto %}
-            <li style="list-style-type:circle">{{ produto.nome }} - {{ produto.ncm}} - {{ produto.valor }}</li>
+            <li style="list-style-type:circle">Produto: {{ produto.nome }} - NCM: {{ produto.ncm}} - Valor: R${{ produto.valor }}
+                <a href="cadastro/?id={{ produto.id }}"><button type="button">Atualizar</button></a>
+                <a href="cadastro/delete/{{ produto.id }}/"><button type="button">Excluir</button></a>
+            </li>
             <br>
         {% endfor %}
     </ul>

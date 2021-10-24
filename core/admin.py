@@ -5,7 +5,7 @@ from core.models import Produto
 
 
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'ncm', 'valor', 'data_criacao')
+    list_display = ('id', 'nome', 'ncm', 'valor', 'data_criacao')
     list_filter = ('usuario', 'nome',)
 
 

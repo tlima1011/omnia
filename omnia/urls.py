@@ -23,6 +23,8 @@ urlpatterns = [
     path('produto/', views.lista_produtos),
     path('produto/cadastro/', views.cadastro),
     path('produto/cadastro/submit', views.submit_cadastro),
+    path('produto/cadastro/delete/<int:id_produto>/', views.delete_produto),
+    #produto/delete/{{ produto.id }}/
     path('', RedirectView.as_view(url='/produto/')),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),

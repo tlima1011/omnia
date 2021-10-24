@@ -41,7 +41,11 @@ def lista_produtos(request):
 
 @login_required(login_url='/login/')
 def cadastro(request):
-    return render(request, 'cadastro.html')
+    id_produto = request.GET.get('id')
+    dados = {}
+    if id_produto:
+        dados['produto'] = Produto.objects.get(id=id_produto)
+    return render(request, 'cadastro.html', dados)
 
 
 @login_required(login_url='/login/')
@@ -51,14 +55,32 @@ def submit_cadastro(request):
         ncm = request.POST.get('ncm')
         valor = request.POST.get('valor')
         usuario = request.user
-        Produto.objects.create(
-            nome=nome,
-            ncm=ncm,
-            valor=valor,
-            usuario=usuario
-        )
-        return redirect('/')
+        id_produto = request.POST.get('id_produto')
+        if id_produto:
+            produto = Produto.objects.get(id=id_produto)
+                #Produto.objects.filter(id=id_produto).update(nome=nome, ncm=ncm, valor=valor)
+            if produto.usuario == usuario:
+                produto.nome = nome
+                produto.ncm = ncm
+                produto.valor = valor
+                produto.save()
+        else:
+            Produto.objects.create(
+                nome=nome,
+                ncm=ncm,
+                valor=valor,
+                usuario=usuario
+            )
+            return redirect('/')
     return redirect('/')
 
+
+@login_required(login_url='/login/')
+def delete_produto(request, id_produto):
+    usuario = request.user
+    produto = Produto.objects.get(id=id_produto)
+    if usuario == produto.usuario:
+        produto.delete()
+    return redirect('/')
 
 

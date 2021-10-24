@@ -3,21 +3,22 @@
 {% block content %}
 
 <h2 style="font-family:verdana"><i>Cadastro de Produtos</i></h2>
-<hr>
+    <hr>
     <form action="submit" method="POST">{% csrf_token %}
+        <input type="number" name="id_produto" value="{{produto.id}}" hidden>
         <label>Nome: </label>
-        <input type="text" name="nome" size="23px" placeholder="Informe nome do Produto">
+        <input type="text" name="nome" size="23px" placeholder="Informe nome do Produto" value="{{ produto.nome}}">
         <br>
         <br>
         <label>NCM: </label>
-        <input type="text" name="ncm" size="23px" placeholder="Informe o NCM">
+        <input type="text" name="ncm" size="23px" placeholder="Informe o NCM" value="{{ produto.ncm}}">
         <br>
         <br>
         <label>Valor: </label>
-        <input type="text" name="valor" size="23px" placeholder="Preço do produto">
+        <input type="text" name="valor" size="23px" placeholder="Preço do produto" value="{{ produto.valor}}">
         <br>
         <br>
-        <button type="submit" onclick="alert('Produto cadastrado com sucesso!')" autofocus >Cadastrar</button>
+        <button type="submit" onclick="alert('Produto salvo com sucesso!')" autofocus >Salvar</button>
         <button type="reset" autofocus>Reiniciar</button>
         <a href="/">
             <button type="button" autofocus>Voltar</button>
