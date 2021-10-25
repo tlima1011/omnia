@@ -1,21 +1,43 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-    <h1 align="center" style="font-family:montserrat"><i>Show Products</i></h1>
+<h1 align="center" style="font-family:montserrat" xmlns:background-color="http://www.w3.org/1999/xhtml"><i>Show Products</i></h1>
     <hr>
-    <h2>Produtos</h2>
+    <h1>Produtos</h1>
+    <hr>
     <a href="cadastro/">
         <button class="button button1" autofocus>Novos Produtos</button>
     </a>
-    <ul style="font-size:19px">
-        {% for produto in produto %}
-            <li style="list-style-type:circle">Produto: {{ produto.nome }} - NCM: {{ produto.ncm}} - Valor: R${{ produto.valor }}
-                <a href="cadastro/?id={{ produto.id }}"><button type="button">Atualizar</button></a>
-                <a href="cadastro/delete/{{ produto.id }}/"><button type="button">Excluir</button></a>
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
+    <table style="font-size:20px" border: 1px;>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>NCM</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <td>
+            {% for produto in produto %}
+                <tr>
+                    <td>
+                        {{ produto.nome }}
+                    </td>
+                    <td>
+                        {{ produto.ncm}}
+                    </td>
+                    <td>
+                        R${{ produto.valor }}
+                    </td>
+                    <td>
+                        <a href="cadastro/?id={{ produto.id }}"><button type="button">Atualizar</button></a>
+                    </td>
+                    <td>
+                        <a href="cadastro/delete/{{ produto.id }}/"><button type="button">Excluir</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </td>
+    </table>
 {% endblock %}
 {% include "model-footer.html" %}
 
