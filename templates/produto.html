@@ -4,18 +4,19 @@
 <h1 align="center" style="font-family:montserrat" xmlns:background-color="http://www.w3.org/1999/xhtml"><i>Show Products</i></h1>
     <hr>
     <a href="cadastro/">
-        <button class="button button1" autofocus>Novos Produtos</button>
+        <button class="btn btn-outline-primary">Novos Produtos</button>
     </a>
     <br>
     <br>
-    <table style="font-size:20px" border: 1px;>
+    <table class="table table-success table-striped">
         <thead>
             <tr>
-                <th>Produto</th>
-                <th>NCM</th>
-                <th>Valor</th>
+                <th scope="col">Produto</th>
+                <th scope="col">NCM</th>
+                <th scope="col">Valor</th>
             </tr>
         </thead>
+        <tbody>
         <td>
             {% for produto in produto %}
                 <tr>
@@ -28,15 +29,18 @@
                     <td>
                         R${{ produto.valor }}
                     </td>
-                    <td>
-                        <a href="cadastro/?id={{ produto.id }}"><button type="button">Atualizar</button></a>
-                    </td>
-                    <td>
-                        <a href="cadastro/delete/{{ produto.id }}/"><button type="button">Excluir</button></a>
-                    </td>
+                    <div align="center">
+                        <td align="center">
+                            <a href="cadastro/?id={{ produto.id }}"><button type="button" class="btn btn-outline-secondary">Atualizar</button></a>
+                        </td>
+                        <td align="center">
+                            <a href="cadastro/delete/{{ produto.id }}/"><button type="button" class="btn btn-outline-danger">Excluir</button></a>
+                        </td>
+                    </div>
                 </tr>
             {% endfor %}
         </td>
+        </tbody>
     </table>
 {% endblock %}
 {% include "model-footer.html" %}
