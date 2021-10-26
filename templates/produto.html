@@ -1,23 +1,25 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-<h1 align="center" style="font-family:montserrat" xmlns:background-color="http://www.w3.org/1999/xhtml"><i>Show Products</i></h1>
+<h1 align="center" style="font-family:montserrat" xmlns:background-color="http://www.w3.org/1999/xhtml"><i><u>Show Products</u></i></h1>
     <hr>
     <a href="cadastro/">
-        <button class="btn btn-outline-primary">Novos Produtos</button>
+        <button class="btn btn-outline-primary"><b>Novos Produtos</b></button>
     </a>
     <br>
     <br>
     <table class="table table-success table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Produto</th>
-                <th scope="col">NCM</th>
-                <th scope="col">Valor</th>
-            </tr>
-        </thead>
         <tbody>
-        <td>
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">NCM</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Atualizar</th>
+                    <th scope="col">Exclusao</th>
+                </tr>
+            </thead>
+            <td>
             {% for produto in produto %}
                 <tr>
                     <td>
@@ -30,16 +32,16 @@
                         R${{ produto.valor }}
                     </td>
                     <div align="center">
-                        <td align="center">
-                            <a href="cadastro/?id={{ produto.id }}"><button type="button" class="btn btn-outline-secondary">Atualizar</button></a>
+                        <td>
+                            <a href="cadastro/?id={{ produto.id }}"><button type="button" class="btn btn-outline-secondary"><b>Atualizar</b></button></a>
                         </td>
-                        <td align="center">
-                            <a href="cadastro/delete/{{ produto.id }}/"><button type="button" class="btn btn-outline-danger">Excluir</button></a>
+                        <td>
+                            <a href="cadastro/delete/{{ produto.id }}/"><button type="button" class="btn btn-outline-danger"><b>Excluir</b></button></a>
                         </td>
                     </div>
                 </tr>
             {% endfor %}
-        </td>
+            </td>
         </tbody>
     </table>
 {% endblock %}

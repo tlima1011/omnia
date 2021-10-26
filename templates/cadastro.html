@@ -2,23 +2,26 @@
 
 {% block content %}
 
-<h2 style="font-family:arial"><i>Cadastro de Produtos</i></h2>
+<h2 style="font-family:arial"><i><u>Cadastro de Produtos</u></i></h2>
     <hr>
     <form action="submit" method="POST">{% csrf_token %}
-        <div class="mb-3">
-            <input type="number" name="id_produto" value="{{produto.id}}" hidden>
-            <label>Nome: </label>
-            <input type="text" name="nome" size="23px" maxlength="50" placeholder="Informe nome do Produto" value="{{ produto.nome}}">
-            <br>
-            <br>
-            <label>NCM: </label>
-            <input type="number" name="ncm" size="23px" maxlength="8" placeholder="Informe o NCM" value="{{ produto.ncm}}">
-            <br>
-            <br>
-            <label>Valor: </label>
-            <input type="number" name="valor" size="23px" maxlength="7" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="Preço do produto" value="{{ produto.valor}}">
-            <br>
-            <br>
+
+                <input type="number" name="id_produto" value="{{produto.id}}" hidden>
+                <div class="form-group">
+                    <label class="form-label">Nome </label>
+                    <input type="text" name="nome" size=22 maxlength="50" placeholder="Informe nome do Produto" value="{{ produto.nome}}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">NCM: </label>
+                    <input type="number" name="ncm" size=22 maxlength="8" placeholder="Informe o NCM" value="{{ produto.ncm}}">
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor: </label>
+                    <input type="number" name="valor" size=22 maxlength="7" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="Preço do produto em R$" value="{{ produto.valor}}">
+                    <br>
+                </div>
+            </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-outline-primary" onclick="alert('Produto salvo com sucesso!')">Salvar</button>
                 <button type="reset"  class="btn btn-outline-primary">Reiniciar</button>
@@ -26,7 +29,6 @@
                     <button type="button" class="btn btn-outline-primary">Voltar</button>
                 </a>
             </div>
-        </div>
     </form>
 {% endblock%}
 
